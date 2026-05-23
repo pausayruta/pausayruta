@@ -106,18 +106,6 @@
       letter-spacing: -0.03em;
     }
 
-    .mini-logo {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: var(--paper);
-      border: 1.5px solid rgba(87, 93, 47, 0.25);
-      position: relative;
-      box-shadow: 0 10px 24px rgba(87, 93, 47, 0.12);
-      overflow: hidden;
-      flex: 0 0 auto;
-    }
-
     .mini-logo::before {
       content: "";
       position: absolute;
@@ -320,108 +308,6 @@
       border-top-color: transparent;
       border-radius: 52% 48% 50% 50%;
       z-index: -1;
-    }
-
-    .sun {
-      position: absolute;
-      left: 50%;
-      top: 66px;
-      width: 160px;
-      height: 160px;
-      transform: translateX(-50%);
-      border: 9px solid var(--sun);
-      border-bottom-color: transparent;
-      border-left-color: transparent;
-      border-right-color: transparent;
-      border-radius: 50%;
-    }
-
-    .ray {
-      position: absolute;
-      left: 50%;
-      top: 62px;
-      width: 8px;
-      height: 72px;
-      border-radius: 999px;
-      background: var(--sun);
-      transform-origin: 50% 132px;
-    }
-
-    .ray.r1 { transform: translateX(-50%) rotate(-72deg); }
-    .ray.r2 { transform: translateX(-50%) rotate(-50deg); }
-    .ray.r3 { transform: translateX(-50%) rotate(-28deg); }
-    .ray.r4 { transform: translateX(-50%) rotate(0deg); }
-    .ray.r5 { transform: translateX(-50%) rotate(28deg); }
-    .ray.r6 { transform: translateX(-50%) rotate(50deg); }
-    .ray.r7 { transform: translateX(-50%) rotate(72deg); }
-
-    .route-line {
-      position: absolute;
-      left: 21%;
-      right: 15%;
-      top: 232px;
-      height: 146px;
-      border-top: 7px solid var(--olive);
-      border-right: 7px solid var(--olive);
-      border-radius: 55% 50% 45% 50%;
-      transform: rotate(4deg);
-    }
-
-    .route-line::after {
-      content: "";
-      position: absolute;
-      left: 45%;
-      top: 24px;
-      width: 118px;
-      height: 118px;
-      border-left: 6px solid var(--olive);
-      border-top: 6px solid var(--olive);
-      border-radius: 50%;
-      transform: rotate(24deg);
-    }
-
-    .route-dash {
-      position: absolute;
-      left: 56%;
-      top: 242px;
-      width: 6px;
-      height: 118px;
-      border-radius: 999px;
-      background: repeating-linear-gradient(
-        to bottom,
-        var(--terracotta) 0 18px,
-        transparent 18px 33px
-      );
-      transform: rotate(-18deg);
-      opacity: 0.88;
-    }
-
-    .logo-words {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 88px;
-      text-align: center;
-      color: var(--olive-dark);
-      font-family: "Caveat", cursive;
-      font-weight: 700;
-      letter-spacing: -0.06em;
-      line-height: 0.72;
-    }
-
-    .logo-words .pausa {
-      display: block;
-      font-size: clamp(5.4rem, 12vw, 8.6rem);
-    }
-
-    .logo-words .y {
-      color: var(--terracotta);
-      font-size: clamp(4.6rem, 9vw, 6.9rem);
-      margin-right: 14px;
-    }
-
-    .logo-words .ruta {
-      font-size: clamp(5.1rem, 11vw, 8rem);
     }
 
     .logo-caption {
@@ -948,6 +834,43 @@
       margin-bottom: 7px;
     }
 
+    .brand-logo-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: var(--paper);
+  padding: 3px;
+  box-shadow: 0 10px 24px rgba(87, 93, 47, 0.12);
+  flex: 0 0 auto;
+}
+
+.real-logo-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 34px;
+  min-height: 550px;
+}
+
+.real-logo-card::before {
+  display: none;
+}
+
+.hero-logo-img {
+  width: min(100%, 500px);
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.real-logo-card .logo-caption {
+  position: static;
+  margin-top: 22px;
+  width: 100%;
+}
+
     @media (max-width: 980px) {
       .hero-grid,
       .next-trip,
@@ -1104,7 +1027,7 @@
     <header>
       <div class="container nav">
         <a href="#inicio" class="brand" aria-label="Ir al inicio de Pausa y Ruta">
-          <span class="mini-logo" aria-hidden="true"></span>
+        <img src="logo-pausa-ruta.png" alt="Logo de Pausa y Ruta" class="brand-logo-img">
           <span class="brand-name">
             <span class="brand-script">Pausa y ruta</span>
             <span class="brand-location">Mercedes · Buenos Aires</span>
@@ -1138,31 +1061,17 @@
             <div class="hero-note">💛 Salidas pensadas para disfrutar, relajarse y compartir</div>
           </div>
 
-          <aside class="logo-card" aria-label="Logo ilustrado de Pausa y Ruta">
-            <div class="sun" aria-hidden="true"></div>
-            <span class="ray r1" aria-hidden="true"></span>
-            <span class="ray r2" aria-hidden="true"></span>
-            <span class="ray r3" aria-hidden="true"></span>
-            <span class="ray r4" aria-hidden="true"></span>
-            <span class="ray r5" aria-hidden="true"></span>
-            <span class="ray r6" aria-hidden="true"></span>
-            <span class="ray r7" aria-hidden="true"></span>
-            <span class="route-line" aria-hidden="true"></span>
-            <span class="route-dash" aria-hidden="true"></span>
+<aside class="logo-card real-logo-card" aria-label="Logo de Pausa y Ruta">
+  <img src="logo-pausa-ruta.png" alt="Logo de Pausa y Ruta" class="hero-logo-img">
 
-            <div class="logo-words">
-              <span class="pausa">Pausa</span>
-              <span class="y">y</span><span class="ruta">ruta</span>
-            </div>
-
-            <div class="logo-caption">
-              <div>
-                <strong>Un espacio para hacer una pausa</strong>
-                <span>Mercedes · Buenos Aires</span>
-              </div>
-              <a class="ig-pill" href="https://www.instagram.com/pausayruta.ok/" target="_blank" rel="noopener">📷 @pausayruta.ok</a>
-            </div>
-          </aside>
+  <div class="logo-caption">
+    <div>
+      <strong>Un espacio para hacer una pausa</strong>
+      <span>Mercedes · Buenos Aires</span>
+    </div>
+    <a class="ig-pill" href="https://www.instagram.com/pausayruta.ok/" target="_blank" rel="noopener">📷 @pausayruta.ok</a>
+  </div>
+</aside>
         </div>
       </section>
 
