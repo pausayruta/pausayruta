@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pausa y Ruta | Salidas, viajes y experiencias</title>
+  <meta name="description" content="Pausa y Ruta: viajes, escapadas, teatro, paseos y experiencias para hacer una pausa de la rutina y disfrutar momentos lindos." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #f8f2e7;
+      --cream-2: #fffaf1;
+      --paper: #fbf5ea;
+      --olive: #575d2f;
+      --olive-dark: #3f4423;
+      --olive-soft: #e7ead7;
+      --sun: #f4b318;
+      --terracotta: #bf7544;
+      --terracotta-soft: #f2d2bd;
+      --brown: #7a573d;
+      --text: #333726;
+      --muted: #76745f;
+      --white: #ffffff;
+      --border: rgba(87, 93, 47, 0.16);
+      --shadow: 0 24px 70px rgba(87, 93, 47, 0.13);
+      --shadow-soft: 0 14px 38px rgba(87, 93, 47, 0.08);
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 6%, rgba(244, 179, 24, 0.18), transparent 31%),
+        radial-gradient(circle at 92% 10%, rgba(191, 117, 68, 0.16), transparent 28%),
+        linear-gradient(180deg, var(--cream) 0%, var(--cream-2) 46%, var(--paper) 100%);
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.18;
+      background-image:
+        linear-gradient(rgba(87, 93, 47, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(87, 93, 47, 0.04) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(180deg, #000, transparent 72%);
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      overflow: hidden;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(248, 242, 231, 0.82);
+      border-bottom: 1px solid rgba(87, 93, 47, 0.1);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--olive);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .mini-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--paper);
+      border: 1.5px solid rgba(87, 93, 47, 0.25);
+      position: relative;
+      box-shadow: 0 10px 24px rgba(87, 93, 47, 0.12);
+      overflow: hidden;
+      flex: 0 0 auto;
+    }
+
+    .mini-logo::before {
+      content: "";
+      position: absolute;
+      left: 15px;
+      top: 7px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 4px solid var(--sun);
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      transform: rotate(-45deg);
+    }
+
+    .mini-logo::after {
+      content: "";
+      position: absolute;
+      left: 6px;
+      right: 5px;
+      bottom: 9px;
+      height: 22px;
+      border-bottom: 4px solid var(--olive);
+      border-radius: 50%;
+      transform: rotate(5deg);
+    }
+
+    .brand-name {
+      display: flex;
+      flex-direction: column;
+      line-height: 0.88;
+    }
+
+    .brand-script {
+      font-family: "Caveat", cursive;
+      font-size: 1.65rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-location {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 0.93rem;
+      font-weight: 750;
+    }
+
+    .nav-links a:hover {
+      color: var(--olive-dark);
+    }
+
+    .nav-cta {
+      padding: 11px 16px;
+      border-radius: 999px;
+      background: var(--olive);
+      color: #fff !important;
+      box-shadow: 0 12px 28px rgba(87, 93, 47, 0.18);
+    }
+
+    .hero {
+      padding: 72px 0 34px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(340px, 0.98fr);
+      align-items: center;
+      gap: 44px;
+    }
+
+    .eyebrow {
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 250, 241, 0.78);
+      color: var(--olive-dark);
+      font-weight: 850;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 30px rgba(87, 93, 47, 0.06);
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      color: var(--olive-dark);
+      letter-spacing: -0.052em;
+      line-height: 1.02;
+    }
+
+    h1 {
+      max-width: 760px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(3.2rem, 7vw, 6.55rem);
+    }
+
+    h1 .script-word {
+      font-family: "Caveat", cursive;
+      font-weight: 700;
+      color: var(--terracotta);
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+
+    .lead {
+      max-width: 630px;
+      margin: 22px 0 0;
+      color: #595b43;
+      font-size: clamp(1.05rem, 2vw, 1.28rem);
+      line-height: 1.68;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 52px;
+      padding: 14px 19px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 850;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: var(--olive);
+      box-shadow: 0 16px 34px rgba(87, 93, 47, 0.22);
+    }
+
+    .btn-primary:hover {
+      background: var(--olive-dark);
+    }
+
+    .btn-secondary {
+      color: var(--olive-dark);
+      background: rgba(255, 250, 241, 0.86);
+      border-color: var(--border);
+    }
+
+    .hero-note {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      align-items: center;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .logo-card {
+      position: relative;
+      min-height: 550px;
+      border-radius: 44px;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(244, 179, 24, 0.18), transparent 27%),
+        linear-gradient(145deg, rgba(255,250,241,0.92), rgba(248,242,231,0.86));
+      border: 1px solid rgba(87, 93, 47, 0.16);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .logo-card::before {
+      content: "";
+      position: absolute;
+      width: 560px;
+      height: 380px;
+      left: 50%;
+      bottom: 36px;
+      transform: translateX(-50%) rotate(2deg);
+      border: 8px solid rgba(87, 93, 47, 0.92);
+      border-top-color: transparent;
+      border-radius: 52% 48% 50% 50%;
+      z-index: -1;
+    }
+
+    .sun {
+      position: absolute;
+      left: 50%;
+      top: 66px;
+      width: 160px;
+      height: 160px;
+      transform: translateX(-50%);
+      border: 9px solid var(--sun);
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      border-radius: 50%;
+    }
+
+    .ray {
+      position: absolute;
+      left: 50%;
+      top: 62px;
+      width: 8px;
+      height: 72px;
+      border-radius: 999px;
+      background: var(--sun);
+      transform-origin: 50% 132px;
+    }
+
+    .ray.r1 { transform: translateX(-50%) rotate(-72deg); }
+    .ray.r2 { transform: translateX(-50%) rotate(-50deg); }
+    .ray.r3 { transform: translateX(-50%) rotate(-28deg); }
+    .ray.r4 { transform: translateX(-50%) rotate(0deg); }
+    .ray.r5 { transform: translateX(-50%) rotate(28deg); }
+    .ray.r6 { transform: translateX(-50%) rotate(50deg); }
+    .ray.r7 { transform: translateX(-50%) rotate(72deg); }
+
+    .route-line {
+      position: absolute;
+      left: 21%;
+      right: 15%;
+      top: 232px;
+      height: 146px;
+      border-top: 7px solid var(--olive);
+      border-right: 7px solid var(--olive);
+      border-radius: 55% 50% 45% 50%;
+      transform: rotate(4deg);
+    }
+
+    .route-line::after {
+      content: "";
+      position: absolute;
+      left: 45%;
+      top: 24px;
+      width: 118px;
+      height: 118px;
+      border-left: 6px solid var(--olive);
+      border-top: 6px solid var(--olive);
+      border-radius: 50%;
+      transform: rotate(24deg);
+    }
+
+    .route-dash {
+      position: absolute;
+      left: 56%;
+      top: 242px;
+      width: 6px;
+      height: 118px;
+      border-radius: 999px;
+      background: repeating-linear-gradient(
+        to bottom,
+        var(--terracotta) 0 18px,
+        transparent 18px 33px
+      );
+      transform: rotate(-18deg);
+      opacity: 0.88;
+    }
+
+    .logo-words {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 88px;
+      text-align: center;
+      color: var(--olive-dark);
+      font-family: "Caveat", cursive;
+      font-weight: 700;
+      letter-spacing: -0.06em;
+      line-height: 0.72;
+    }
+
+    .logo-words .pausa {
+      display: block;
+      font-size: clamp(5.4rem, 12vw, 8.6rem);
+    }
+
+    .logo-words .y {
+      color: var(--terracotta);
+      font-size: clamp(4.6rem, 9vw, 6.9rem);
+      margin-right: 14px;
+    }
+
+    .logo-words .ruta {
+      font-size: clamp(5.1rem, 11vw, 8rem);
+    }
+
+    .logo-caption {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 22px;
+      background: rgba(255, 250, 241, 0.82);
+      border: 1px solid rgba(87, 93, 47, 0.12);
+      backdrop-filter: blur(16px);
+    }
+
+    .logo-caption strong {
+      color: var(--olive-dark);
+      font-size: 0.98rem;
+    }
+
+    .logo-caption span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.86rem;
+      font-weight: 700;
+      margin-top: 3px;
+    }
+
+    .ig-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 10px 13px;
+      border-radius: 999px;
+      color: #fff;
+      background: var(--terracotta);
+      font-size: 0.9rem;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    section {
+      padding: 62px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .section-kicker {
+      color: var(--terracotta);
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.1rem, 4vw, 4.05rem);
+    }
+
+    .section-copy {
+      max-width: 450px;
+      color: var(--muted);
+      line-height: 1.68;
+      font-weight: 600;
+    }
+
+    .next-trip {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      border-radius: var(--radius-xl);
+      background: rgba(255, 250, 241, 0.92);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .trip-visual {
+      min-height: 470px;
+      position: relative;
+      background:
+        radial-gradient(circle at 45% 23%, rgba(244,179,24,0.34), transparent 19%),
+        linear-gradient(145deg, rgba(231,234,215,0.72), rgba(255,250,241,0.35)),
+        url("https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80") center/cover;
+    }
+
+    .trip-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 20%, rgba(63,68,35,0.52) 100%);
+    }
+
+    .trip-badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 250, 241, 0.88);
+      color: var(--olive-dark);
+      font-weight: 900;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    }
+
+    .trip-overlay {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      z-index: 1;
+      padding: 20px;
+      border-radius: 25px;
+      background: rgba(255, 250, 241, 0.88);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 250, 241, 0.54);
+    }
+
+    .trip-overlay strong {
+      display: block;
+      color: var(--olive-dark);
+      font-size: 1.18rem;
+    }
+
+    .trip-overlay span {
+      display: block;
+      color: var(--muted);
+      margin-top: 5px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .trip-content {
+      padding: clamp(27px, 4.4vw, 50px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .trip-content h3 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.15rem, 3.4vw, 3.6rem);
+      margin-top: 2px;
+    }
+
+    .trip-description {
+      margin: 18px 0 0;
+      color: #595b43;
+      font-size: 1.08rem;
+      line-height: 1.72;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin: 25px 0 28px;
+    }
+
+    .detail {
+      padding: 16px;
+      border-radius: 20px;
+      background: #ffffff;
+      border: 1px solid rgba(87, 93, 47, 0.12);
+      box-shadow: 0 10px 26px rgba(87, 93, 47, 0.05);
+    }
+
+    .detail span {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .detail strong {
+      color: var(--olive-dark);
+      font-size: 1rem;
+    }
+
+    .whatsapp-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .wa-card {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 15px 16px;
+      border-radius: 22px;
+      color: #fff;
+      background: var(--olive);
+      box-shadow: 0 14px 30px rgba(87, 93, 47, 0.2);
+      transition: transform 0.18s ease, background 0.18s ease;
+    }
+
+    .wa-card:hover {
+      transform: translateY(-2px);
+      background: var(--olive-dark);
+    }
+
+    .wa-card strong {
+      display: block;
+      font-size: 1.02rem;
+      line-height: 1.1;
+    }
+
+    .wa-card small {
+      display: block;
+      margin-top: 5px;
+      color: rgba(255,255,255,0.76);
+      font-weight: 750;
+    }
+
+    .wa-icon {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      flex: 0 0 auto;
+      font-weight: 900;
+    }
+
+    .about-card {
+      border-radius: var(--radius-xl);
+      padding: clamp(28px, 5vw, 58px);
+      background:
+        linear-gradient(135deg, rgba(255,250,241,0.96), rgba(242,210,189,0.42));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .about-text {
+      columns: 2;
+      column-gap: 44px;
+      margin-top: 24px;
+      color: #555840;
+      line-height: 1.82;
+      font-size: 1.04rem;
+    }
+
+    .about-text p {
+      margin: 0 0 18px;
+      break-inside: avoid;
+    }
+
+    .experiences-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .experience-card {
+      min-height: 178px;
+      padding: 22px 18px;
+      border-radius: 26px;
+      background: rgba(255, 250, 241, 0.92);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .experience-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 44px rgba(87, 93, 47, 0.12);
+    }
+
+    .experience-icon {
+      width: 47px;
+      height: 47px;
+      display: grid;
+      place-items: center;
+      border-radius: 17px;
+      background: var(--olive-soft);
+      font-size: 1.34rem;
+      margin-bottom: 18px;
+    }
+
+    .experience-card:nth-child(2n) .experience-icon {
+      background: var(--terracotta-soft);
+    }
+
+    .experience-card:nth-child(3n) .experience-icon {
+      background: rgba(244, 179, 24, 0.22);
+    }
+
+    .experience-card h3 {
+      font-size: 1.04rem;
+      line-height: 1.2;
+      letter-spacing: -0.035em;
+    }
+
+    .experience-card p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.56;
+      font-weight: 550;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .step {
+      padding: 26px;
+      border-radius: 28px;
+      background: rgba(255, 250, 241, 0.92);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--terracotta);
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .step h3 {
+      font-size: 1.28rem;
+      letter-spacing: -0.04em;
+    }
+
+    .step p {
+      margin: 11px 0 0;
+      color: var(--muted);
+      line-height: 1.66;
+      font-weight: 550;
+    }
+
+    .instagram-strip {
+      display: grid;
+      grid-template-columns: 0.86fr 1.14fr;
+      gap: 18px;
+      align-items: center;
+      border-radius: var(--radius-xl);
+      padding: clamp(24px, 4vw, 42px);
+      background: var(--olive-dark);
+      color: #fff;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .instagram-strip::before {
+      content: "";
+      position: absolute;
+      width: 430px;
+      height: 430px;
+      right: -170px;
+      top: -200px;
+      border-radius: 50%;
+      background: rgba(244, 179, 24, 0.22);
+      z-index: -1;
+    }
+
+    .ig-logo-large {
+      min-height: 255px;
+      border-radius: 30px;
+      background: var(--paper);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .ig-logo-large::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 33px;
+      width: 90px;
+      height: 90px;
+      transform: translateX(-50%);
+      border: 7px solid var(--sun);
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      border-radius: 50%;
+    }
+
+    .ig-logo-large::after {
+      content: "Pausa\A y ruta";
+      white-space: pre;
+      position: absolute;
+      inset: auto 0 42px;
+      text-align: center;
+      color: var(--olive-dark);
+      font-family: "Caveat", cursive;
+      font-size: 5.2rem;
+      font-weight: 700;
+      line-height: 0.72;
+      letter-spacing: -0.06em;
+    }
+
+    .instagram-strip h2 {
+      color: #fff;
+      max-width: 620px;
+    }
+
+    .instagram-strip p {
+      max-width: 620px;
+      margin: 16px 0 24px;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.7;
+      font-weight: 550;
+    }
+
+    .instagram-strip .btn-secondary {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      border-color: rgba(255,255,255,0.22);
+    }
+
+    .final-cta {
+      text-align: center;
+      border-radius: 38px;
+      padding: clamp(34px, 6vw, 70px);
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(87,93,47,0.96), rgba(63,68,35,0.93)),
+        radial-gradient(circle at top left, rgba(244,179,24,0.44), transparent 36%);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-cta::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -110px;
+      width: 520px;
+      height: 260px;
+      transform: translateX(-50%);
+      border: 7px solid rgba(255, 250, 241, 0.28);
+      border-top: none;
+      border-radius: 0 0 50% 50%;
+    }
+
+    .final-cta h2 {
+      color: #fff;
+      max-width: 780px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .final-cta p {
+      max-width: 620px;
+      margin: 18px auto 28px;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.7;
+      font-size: 1.05rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .final-buttons {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .final-buttons .btn-primary {
+      background: var(--terracotta);
+    }
+
+    .final-buttons .btn-secondary {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border-color: rgba(255,255,255,0.24);
+    }
+
+    footer {
+      padding: 36px 0 46px;
+      color: var(--muted);
+      text-align: center;
+      font-weight: 650;
+    }
+
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--olive-dark);
+      font-family: "Caveat", cursive;
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .next-trip,
+      .instagram-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .logo-card {
+        min-height: 510px;
+      }
+
+      .trip-visual {
+        min-height: 345px;
+      }
+
+      .experiences-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .about-text {
+        columns: 1;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        width: min(100% - 24px, 1120px);
+      }
+
+      .nav {
+        min-height: 68px;
+      }
+
+      .brand-script {
+        font-size: 1.48rem;
+      }
+
+      .brand-location {
+        font-size: 0.65rem;
+      }
+
+      .nav-links a:not(.nav-cta) {
+        display: none;
+      }
+
+      .nav-cta {
+        padding: 10px 13px;
+        font-size: 0.88rem;
+      }
+
+      .hero {
+        padding: 46px 0 24px;
+      }
+
+      .hero-actions,
+      .final-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      section {
+        padding: 46px 0;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: start;
+      }
+
+      .logo-card {
+        min-height: 430px;
+        border-radius: 32px;
+      }
+
+      .logo-card::before {
+        width: 440px;
+        height: 288px;
+        bottom: 44px;
+        border-width: 6px;
+      }
+
+      .sun {
+        top: 55px;
+        width: 122px;
+        height: 122px;
+        border-width: 7px;
+      }
+
+      .ray {
+        top: 49px;
+        width: 6px;
+        height: 52px;
+        transform-origin: 50% 102px;
+      }
+
+      .route-line {
+        left: 17%;
+        right: 12%;
+        top: 194px;
+        height: 116px;
+        border-top-width: 6px;
+        border-right-width: 6px;
+      }
+
+      .route-dash {
+        top: 200px;
+        height: 94px;
+      }
+
+      .logo-words {
+        bottom: 72px;
+      }
+
+      .logo-caption {
+        left: 13px;
+        right: 13px;
+        bottom: 13px;
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .ig-pill {
+        width: 100%;
+      }
+
+      .details-grid,
+      .whatsapp-grid,
+      .experiences-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .trip-content {
+        padding: 26px 18px 20px;
+      }
+
+      .about-card,
+      .final-cta,
+      .instagram-strip {
+        border-radius: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="container nav">
+        <a href="#inicio" class="brand" aria-label="Ir al inicio de Pausa y Ruta">
+          <span class="mini-logo" aria-hidden="true"></span>
+          <span class="brand-name">
+            <span class="brand-script">Pausa y ruta</span>
+            <span class="brand-location">Mercedes · Buenos Aires</span>
+          </span>
+        </a>
+
+        <nav class="nav-links" aria-label="Navegación principal">
+          <a href="#proxima-salida">Próxima salida</a>
+          <a href="#experiencias">Experiencias</a>
+          <a href="#instagram">Instagram</a>
+          <a class="nav-cta" href="#consultar">Consultar</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="inicio">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="eyebrow">✨ Bienvenidos a Pausa y Ruta</div>
+            <h1>Hacé una <span class="script-word">pausa</span> y regalate un momento lindo.</h1>
+            <p class="lead">
+              Viajes, escapadas, teatro, paseos y experiencias recreativas para salir de la rutina, compartir, conocer lugares y volver con recuerdos, charlas y nuevas historias.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#proxima-salida">Ver próxima salida</a>
+              <a class="btn btn-secondary" href="https://www.instagram.com/pausayruta.ok/" target="_blank" rel="noopener">Ver Instagram</a>
+            </div>
+
+            <div class="hero-note">💛 Salidas pensadas para disfrutar, relajarse y compartir</div>
+          </div>
+
+          <aside class="logo-card" aria-label="Logo ilustrado de Pausa y Ruta">
+            <div class="sun" aria-hidden="true"></div>
+            <span class="ray r1" aria-hidden="true"></span>
+            <span class="ray r2" aria-hidden="true"></span>
+            <span class="ray r3" aria-hidden="true"></span>
+            <span class="ray r4" aria-hidden="true"></span>
+            <span class="ray r5" aria-hidden="true"></span>
+            <span class="ray r6" aria-hidden="true"></span>
+            <span class="ray r7" aria-hidden="true"></span>
+            <span class="route-line" aria-hidden="true"></span>
+            <span class="route-dash" aria-hidden="true"></span>
+
+            <div class="logo-words">
+              <span class="pausa">Pausa</span>
+              <span class="y">y</span><span class="ruta">ruta</span>
+            </div>
+
+            <div class="logo-caption">
+              <div>
+                <strong>Un espacio para hacer una pausa</strong>
+                <span>Mercedes · Buenos Aires</span>
+              </div>
+              <a class="ig-pill" href="https://www.instagram.com/pausayruta.ok/" target="_blank" rel="noopener">📷 @pausayruta.ok</a>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="proxima-salida">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="section-kicker">Próxima salida</div>
+              <h2>El próximo plan, claro y fácil de consultar</h2>
+            </div>
+            <p class="section-copy">
+              La idea es que esta sección sea el centro de la página: destino, fecha, detalles importantes y dos botones directos para hablar con Nati o Clau.
+            </p>
+          </div>
+
+          <article class="next-trip">
+            <div class="trip-visual">
+              <div class="trip-badge">🚍 Próxima experiencia</div>
+              <div class="trip-overlay">
+                <strong>Más que un destino</strong>
+                <span>Encuentro, disfrute y un pequeño respiro para cortar la rutina.</span>
+              </div>
+            </div>
+
+            <div class="trip-content">
+              <div class="section-kicker">Salida destacada</div>
+              <h3 id="trip-title">Próxima salida a confirmar</h3>
+              <p class="trip-description" id="trip-description">
+                Una experiencia pensada para disfrutar el día, conocer un lugar lindo, compartir el viaje y volver con nuevas historias.
+              </p>
+
+              <div class="details-grid">
+                <div class="detail">
+                  <span>Fecha</span>
+                  <strong id="trip-date">Próximamente</strong>
+                </div>
+                <div class="detail">
+                  <span>Salida</span>
+                  <strong id="trip-start">Mercedes, Buenos Aires</strong>
+                </div>
+                <div class="detail">
+                  <span>Incluye</span>
+                  <strong id="trip-includes">Traslado + coordinación</strong>
+                </div>
+                <div class="detail">
+                  <span>Estado</span>
+                  <strong id="trip-status">Consultas abiertas</strong>
+                </div>
+              </div>
+
+              <div class="whatsapp-grid" id="consultar">
+                <a class="wa-card" id="wa-nati" href="#" target="_blank" rel="noopener">
+                  <span>
+                    <strong>Consultar con Nati</strong>
+                    <small>WhatsApp directo</small>
+                  </span>
+                  <span class="wa-icon">→</span>
+                </a>
+
+                <a class="wa-card" id="wa-clau" href="#" target="_blank" rel="noopener">
+                  <span>
+                    <strong>Consultar con Clau</strong>
+                    <small>WhatsApp directo</small>
+                  </span>
+                  <span class="wa-icon">→</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="quienes-somos">
+        <div class="container">
+          <div class="about-card">
+            <div class="section-kicker">La propuesta</div>
+            <h2>Nace este espacio con una idea simple</h2>
+            <div class="about-text">
+              <p>Hacer una pausa de la rutina y regalarnos momentos lindos.</p>
+              <p>Pausa y Ruta surge de las ganas de compartir experiencias, viajar, salir, conocer lugares, disfrutar del teatro, descubrir nuevos rincones y volver con recuerdos, charlas y nuevas historias.</p>
+              <p>Muchas veces queremos hacer planes, pero entre el tiempo, la organización y el día a día, terminamos postergándolos.</p>
+              <p>Y justamente ahí aparece esta propuesta: crear salidas pensadas para disfrutar, relajarse y compartir.</p>
+              <p>Queremos que cada salida sea más que un destino. Que sea encuentro, disfrute y un pequeño respiro.</p>
+              <p>Gracias por acompañarnos desde el comienzo 💛</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experiencias">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="section-kicker">Experiencias</div>
+              <h2>Planes para salir de la rutina</h2>
+            </div>
+            <p class="section-copy">
+              Propuestas simples, bien organizadas y pensadas para que solo tengas que elegir sumarte y disfrutar.
+            </p>
+          </div>
+
+          <div class="experiences-grid">
+            <article class="experience-card">
+              <div class="experience-icon">🚍</div>
+              <h3>Viajes y escapadas</h3>
+              <p>Salidas grupales para conocer nuevos lugares y vivir el día de otra manera.</p>
+            </article>
+
+            <article class="experience-card">
+              <div class="experience-icon">🎭</div>
+              <h3>Teatro y cultura</h3>
+              <p>Propuestas culturales para disfrutar espectáculos, obras y planes especiales.</p>
+            </article>
+
+            <article class="experience-card">
+              <div class="experience-icon">☕</div>
+              <h3>Paseos recreativos</h3>
+              <p>Experiencias tranquilas para conversar, recorrer y compartir.</p>
+            </article>
+
+            <article class="experience-card">
+              <div class="experience-icon">🌿</div>
+              <h3>Salidas de día</h3>
+              <p>Aventuras cortas, lindas y posibles para cortar con la rutina.</p>
+            </article>
+
+            <article class="experience-card">
+              <div class="experience-icon">✨</div>
+              <h3>Momentos para disfrutar</h3>
+              <p>Planes para desconectar, respirar y volver con energía renovada.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="como-reservar">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="section-kicker">Cómo reservar</div>
+              <h2>Todo simple, por WhatsApp</h2>
+            </div>
+          </div>
+
+          <div class="steps">
+            <article class="step">
+              <div class="step-number">1</div>
+              <h3>Mirás la próxima salida</h3>
+              <p>Revisás la propuesta destacada, la fecha, el punto de salida y lo que incluye.</p>
+            </article>
+
+            <article class="step">
+              <div class="step-number">2</div>
+              <h3>Consultás con Nati o Clau</h3>
+              <p>Elegís cualquiera de los dos botones de WhatsApp para resolver dudas y pedir más información.</p>
+            </article>
+
+            <article class="step">
+              <div class="step-number">3</div>
+              <h3>Reservás tu lugar</h3>
+              <p>Coordinamos los detalles para que puedas sumarte sin preocuparte por la organización.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="instagram">
+        <div class="container">
+          <div class="instagram-strip">
+            <div class="ig-logo-large" aria-hidden="true"></div>
+            <div>
+              <div class="section-kicker">Instagram</div>
+              <h2>Seguinos para ver las próximas salidas</h2>
+              <p>
+                En Instagram vamos compartiendo novedades, propuestas, fechas, fotos y toda la información para que puedas sumarte al próximo plan.
+              </p>
+              <a class="btn btn-secondary" href="https://www.instagram.com/pausayruta.ok/" target="_blank" rel="noopener">Ir a @pausayruta.ok</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="final-cta">
+            <h2>¿Te sumás a la próxima pausa?</h2>
+            <p>
+              Escribinos por WhatsApp y consultá por la próxima salida de Pausa y Ruta. La organización la pensamos nosotras; vos venís a disfrutar.
+            </p>
+            <div class="final-buttons">
+              <a class="btn btn-primary" id="wa-nati-final" href="#" target="_blank" rel="noopener">Consultar con Nati</a>
+              <a class="btn btn-secondary" id="wa-clau-final" href="#" target="_blank" rel="noopener">Consultar con Clau</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-brand"><span>☀️</span> Pausa y ruta</div>
+        <div>Mercedes · Buenos Aires · Viajes, salidas y experiencias para hacer una pausa de la rutina.</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const proximaSalida = {
+      titulo: "Próxima salida a confirmar",
+      descripcion: "Una experiencia pensada para disfrutar el día, conocer un lugar lindo, compartir el viaje y volver con nuevas historias.",
+      fecha: "Próximamente",
+      salida: "Mercedes, Buenos Aires",
+      incluye: "Traslado + coordinación",
+      estado: "Consultas abiertas"
+    };
+
+    const contactos = {
+      nati: {
+        nombre: "Nati",
+        telefono: "5492324517130"
+      },
+      clau: {
+        nombre: "Clau",
+        telefono: "5492324560524"
+      }
+    };
+
+    const mensaje = "Hola! Quiero consultar por la próxima salida de Pausa y Ruta. ¿Me pasás más información?";
+
+    function whatsappLink(telefono) {
+      return `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+    }
+
+    function completarProximaSalida() {
+      document.getElementById("trip-title").textContent = proximaSalida.titulo;
+      document.getElementById("trip-description").textContent = proximaSalida.descripcion;
+      document.getElementById("trip-date").textContent = proximaSalida.fecha;
+      document.getElementById("trip-start").textContent = proximaSalida.salida;
+      document.getElementById("trip-includes").textContent = proximaSalida.incluye;
+      document.getElementById("trip-status").textContent = proximaSalida.estado;
+    }
+
+    function completarWhatsApp() {
+      const botones = [
+        ["wa-nati", contactos.nati.telefono],
+        ["wa-clau", contactos.clau.telefono],
+        ["wa-nati-final", contactos.nati.telefono],
+        ["wa-clau-final", contactos.clau.telefono]
+      ];
+
+      botones.forEach(([id, telefono]) => {
+        const element = document.getElementById(id);
+        if (element) element.href = whatsappLink(telefono);
+      });
+    }
+
+    completarProximaSalida();
+    completarWhatsApp();
+  </script>
+</body>
+</html>
